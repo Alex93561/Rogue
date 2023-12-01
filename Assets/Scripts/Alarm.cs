@@ -9,7 +9,9 @@ public class Alarm : MonoBehaviour
     private float _minVolume = 0;
     private float _maxVolume = 1;
     private WaitForSeconds _sleep = new WaitForSeconds(0.1f);
-    private Coroutine _changeVolume;
+
+    private Coroutine _increaseVolume;
+    private Coroutine _decreaseVolume;
 
     private void Start()
     {
@@ -19,19 +21,23 @@ public class Alarm : MonoBehaviour
     public void RougeEnter()
     {
         TryPlayAudioSurce();
-        _changeVolume = StartCoroutine(ChangeVolume(_maxVolume));
+
+        if (_decreaseVolume != null)
+            StopCoroutine(_decreaseVolume);
+
+        _increaseVolume = StartCoroutine(ChangeVolume(_maxVolume));
     }
 
     public void RougeExit()
     {
-        _changeVolume = StartCoroutine(ChangeVolume(_minVolume));
+        if (_increaseVolume != null)
+            StopCoroutine(_increaseVolume);
+
+        _decreaseVolume = StartCoroutine(ChangeVolume(_minVolume));
     }
 
     private IEnumerator ChangeVolume(float volume)
     {
-        if (_changeVolume != null)
-            StopCoroutine(_changeVolume);
-
         while (_audioSource.volume != volume)
         {
             _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, volume, _step);
@@ -39,7 +45,6 @@ public class Alarm : MonoBehaviour
             yield return _sleep;
         }
 
-        StopCoroutine(_changeVolume);
         TryStopAudioSurce();
     }
 

@@ -13,6 +13,9 @@ public class Mover : MonoBehaviour
 
     private void Update()
     {
-       _transform.position = Vector3.MoveTowards(_transform.position, _transform.position + Vector3.forward, _speed * Time.deltaTime);
+       _transform.position = Vector3.MoveTowards(
+           _transform.position, 
+           _transform.position + Vector3.forward, 
+           _speed * Time.deltaTime);
     }
 }
