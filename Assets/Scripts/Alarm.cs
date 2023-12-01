@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Signaling : MonoBehaviour
+public class Alarm : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
 
@@ -16,13 +16,13 @@ public class Signaling : MonoBehaviour
         _audioSource.volume = _minVolume;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void RougeEnter()
     {
         TryPlayAudioSurce();
         _changeVolume = StartCoroutine(ChangeVolume(_maxVolume));
     }
 
-    private void OnCollisionExit(Collision collision)
+    public void RougeExit()
     {
         _changeVolume = StartCoroutine(ChangeVolume(_minVolume));
     }

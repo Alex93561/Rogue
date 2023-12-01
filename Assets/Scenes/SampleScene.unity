@@ -556,9 +556,10 @@ GameObject:
   - component: {fileID: 1788168705}
   - component: {fileID: 1788168704}
   - component: {fileID: 1788168703}
-  - component: {fileID: 1788168708}
   - component: {fileID: 1788168707}
   - component: {fileID: 1788168709}
+  - component: {fileID: 1788168711}
+  - component: {fileID: 1788168710}
   m_Layer: 0
   m_Name: Home
   m_TagString: Untagged
@@ -740,19 +741,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1788168708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788168702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d3a4ab5eaaabf41a0d99baa54d67b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioSource: {fileID: 1788168707}
 --- !u!54 &1788168709
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -769,3 +757,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1788168710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788168702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0198dae24ff55f04f8fc020ee2582924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 1788168707}
+--- !u!114 &1788168711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788168702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3311dc711caf64480fc718a230828b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alarm: {fileID: 1788168710}
