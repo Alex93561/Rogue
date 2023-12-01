@@ -18,11 +18,7 @@ public class Signaling : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_audioSource.isPlaying == false)
-        {
-            _audioSource.Play();
-        }
-
+        TryPlayAudioSurce();
         _changeVolume = StartCoroutine(ChangeVolume(_maxVolume));
     }
 
@@ -34,9 +30,7 @@ public class Signaling : MonoBehaviour
     private IEnumerator ChangeVolume(float volume)
     {
         if (_changeVolume != null)
-        {
             StopCoroutine(_changeVolume);
-        }
 
         while (_audioSource.volume != volume)
         {
@@ -46,10 +40,18 @@ public class Signaling : MonoBehaviour
         }
 
         StopCoroutine(_changeVolume);
+        TryStopAudioSurce();
+    }
 
+    private void TryPlayAudioSurce()
+    {
+        if (_audioSource.isPlaying == false)
+            _audioSource.Play();
+    }
+
+    private void TryStopAudioSurce()
+    {
         if (_audioSource.volume == _minVolume)
-        {
             _audioSource.Stop();
-        }
     }
 }
